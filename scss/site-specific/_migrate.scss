@@ -1,0 +1,61 @@
+////////////////////////////////////////////////////////////////////////////
+
+// Migrate PAGE STYLES
+
+////////////////////////////////////////////////////////////////////////////
+.migrate {
+
+	.hero {
+		background-image: url('../img/mobile/hero/hero-migrate.jpg');
+
+		@include breakpoint(tablet){
+			background-image: url('../img/desktop/hero/hero-migrate.jpg');
+		}
+
+		.col-100 {
+			margin-bottom: 0;
+		}
+
+		.screenshot {
+			display: block;
+			margin: $doublegutter auto 0;
+		}
+	}
+
+	.migrate-to-tune p,
+	.migration-guru p {
+		font-weight: $fw-light;
+		font-size: $fs-small;
+
+
+		@include breakpoint(tablet) {
+			font-size: $fs-medium;
+			line-height: 1.35;
+			margin-bottom: 0.8em;
+		}
+
+		@include breakpoint(desktop) {
+			font-size: $fs-large;
+			line-height: 1.35;
+			margin-bottom: 0.66em;
+		}
+	}
+
+	.migrate-to-tune .heading {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.migration-guru .button {
+		display: block;
+
+		@include breakpoint(tablet) {
+			display: inline-block;
+		}
+	}
+
+	.headshot {
+		@include set-image-as-circle(7px);
+		@include margin-trailer();
+	}
+}

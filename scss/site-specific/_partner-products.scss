@@ -1,0 +1,76 @@
+
+.partner-products {
+	.hero {
+		background-image: url('../img/mobile/hero/hero-partner-products.jpg');
+
+		@include breakpoint(tablet){
+			background-image: url('../img/desktop/hero/hero-partner-products.jpg');
+		}
+	}
+
+	// Navigation Item
+	.navigation__partner-products a {
+		color: $c-blue !important;
+		font-weight: $fw-bold;
+	}
+
+	.flag__body ul {
+		margin-bottom: 0;
+		list-style-type: none;
+	}
+
+	.flag__body li {
+		position: relative;
+		padding-left: 40px;
+
+		&:not(:last-of-type) {
+			margin-bottom: 1em;
+		}
+
+		&:before {
+			content: '\00a0';
+			background: url('../img/common/icons/icon-check.svg') center no-repeat;
+			width: 12px;
+			height: auto;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		.flag__image {
+			display: table-row;
+
+			a {
+				margin-top: $gutter * 2;
+			}
+		}
+	}
+
+	@include breakpoint(tablet) {
+		.flag__body ul {
+			width: 80%;
+		}
+	}
+
+	.hasoffers {
+		img {
+			margin-bottom: $gutter;
+		}
+	}
+
+	.agency-center h1,
+	.partner-portal h1 {
+		margin-bottom: $gutter * 2;
+		font-weight: $fw-light;
+	}
+
+	.hasoffers h3,
+	.agency-center h3,
+	.partner-portal h3 {
+		margin-bottom: $gutter * 1.25;
+	}
+
+
+}

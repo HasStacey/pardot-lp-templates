@@ -1,0 +1,87 @@
+////////////////////////////////////////////////////////////////////////////
+
+// BUTTONS
+
+////////////////////////////////////////////////////////////////////////////
+
+// Creates button with specified color
+@mixin button($color) {
+	background-color: $color;
+	border: 1px solid $color;
+}
+
+.button,
+.button:active,
+.button:focus,
+.button:visited {
+	// Default button on a light background; used for
+	// .banded, .banded--quaternary
+	display: inline-block;
+	min-width: 250px;
+	padding: 10px 20px 9px;
+	border-radius: $border-radius;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: none;
+	white-space: nowrap;
+	font-family: $f-primary;
+	color: $c-white;
+	-webkit-appearance: none; // Prevents ugly buttons in iOS
+	@include button($c-blue);
+	@include adjust-font-size-to($fs-small);
+	@include single-transition(all, 0.25s, ease);
+
+	// SMALL BUTTON
+	&.button--small {
+		@include adjust-font-size-to($fs-xsmall);
+		min-width: 0;
+		padding: 2px 10px;
+	}
+
+	// LARGE BUTTON
+	&.button--large {
+		@include adjust-font-size-to($fs-medium);
+		min-width: 0;
+		padding: 15px 50px;
+	}
+
+	&.button--block {
+		display: block;
+	}
+
+	// BUTTON COLOR OVERRIDE 
+	&.button--dkblue {
+		@include button($c-dkblue);
+	}
+
+	&.button--ltblue {
+		@include button($c-ltblue);
+	}
+
+	&.button--green {
+		@include button($c-green);
+	}
+
+	&.button--orange {
+		@include button($c-orange);
+	}
+	
+	&.button--slate {
+		@include button($c-slate);
+	}
+
+	// HOVER
+	&:hover {
+		background-color: transparent;
+		border: 1px solid $c-slate;
+		color: $c-slate; 
+	}
+	// Use when the button is on a dark background
+	&.button--overdarkbg:hover {
+		border: 1px solid $c-white; 
+		color: $c-white;
+	}
+
+}

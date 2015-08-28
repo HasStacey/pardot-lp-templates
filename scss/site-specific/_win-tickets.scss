@@ -1,0 +1,59 @@
+// Win Tickets LP
+.win-tickets {
+	.hero {
+		background-image: url('../img/mobile/hero/hero-postback-win-tickets.jpg');
+		color: $c-white;
+
+		@include breakpoint(tablet) {
+			background-image: url('../img/desktop/hero/hero-postback-win-tickets.jpg');
+		}
+
+		.col-33:nth-of-type(3n+1) {
+
+			@media screen and (min-width: 768px) and (max-width: 1023px) {
+				clear: both;
+				width: 100%;
+				margin-top: 50px;
+			}
+		}
+	}
+
+	// Change heading and font sizes for the rules and entry info
+	.entry-info {
+		h3 {
+			text-align: center;
+			color: $c-yellow;
+			text-transform: uppercase;
+			font-weight: $fw-bold;
+		}
+
+		@include breakpoint(tablet) {
+			p, ol, li {
+				font-size: 25px;
+				line-height: 1.5;
+			}
+		}
+	}
+
+	.pb-logo {
+		width: 244px;
+		height: auto;
+		margin: 0 auto;
+		display: block;
+	}
+
+	// Prevent clipping
+	svg {
+		max-width: 100%;
+	}
+
+	// Prepare to transform bg color
+	path {
+		transition: all 0.2s ease;
+	}
+
+	// Change bg color
+	svg:hover path {
+		fill: $c-ltblue;
+	}
+}

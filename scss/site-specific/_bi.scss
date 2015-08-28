@@ -1,0 +1,74 @@
+.bi {
+	color: $c-slate;
+
+	.hero {
+		background-image: url('../img/mobile/hero/hero-bi.jpg?v=1.5');
+		background-position: center 0;
+
+		@include breakpoint(tablet) {
+			background-image: url('../img/desktop/hero/hero-bi.jpg?v=1.5');
+		}
+
+		@include breakpoint(1024px, max) {
+			.col-33:nth-of-type(3n) {
+				clear: both;
+				width: 100%;
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+	}
+
+	.login {
+		background: $c-blue;
+		padding: 5px 20px;
+		border-radius: 0 0 $border-radius $border-radius;
+		position: absolute;
+		top: 0;
+		right: 20%;
+		color: $c-white;
+		text-decoration: none;
+		text-transform: uppercase;
+		@include adjust-font-size-to($fs-xsmall);
+
+		&:hover {
+			background-color: $c-slate;
+		}
+	}
+
+	.banded--tertiary em {
+		color: $c-green;
+	}
+
+	label {
+		display: block;
+		color: $c-ltgrey;
+	}
+
+	input[type=text],
+	input[type=email] {
+		background-color: rgba($c-white, 0.2);
+		color: $c-white;
+		letter-spacing: 1px;
+		border: 2px solid transparent;
+		width: 100%;
+		font-family: $f-primary;
+		padding: 5px 10px;
+		@include adjust-font-size-to($fs-small);
+
+		&:focus {
+			outline: 0;
+			border: 2px solid $c-green;
+		}
+	}
+
+	input[type=submit] {
+		@include margin-leader(.5);
+		width: 100%;
+	}
+
+	.testimonial__content:before,
+	.testimonial__content:after {
+		color: $c-green;
+	}
+}

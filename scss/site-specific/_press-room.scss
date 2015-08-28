@@ -1,0 +1,64 @@
+.press {
+    .hero {
+        background-image: url('../img/mobile/hero/hero-press.jpg');
+        background-position: center;
+
+        @include breakpoint(tablet) {
+            background-image: url('../img/desktop/hero/hero-press.jpg');
+        }
+
+        h1,
+        h4 {
+            color: $c-white;
+        }
+    }
+
+    // Navigation Item
+    .navigation__press-room a {
+        color: $c-blue !important;
+        font-weight: $fw-bold;
+    }
+
+    .subhero__image {
+        @include breakpoint(tablet) {
+            width: 40%;
+        }
+
+        .subhero__image--leah-motz {
+            border-radius: 50%;
+        }
+    }
+
+    .articleheading {
+        margin-bottom: $doublegutter;
+    }
+
+    .read-more-show,
+    .read-more-hide {
+        text-align: center;
+        display: block;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .mediablock {
+        margin-bottom: $doublegutter;
+        clear: both; /*For IE */
+    }
+
+    .mediablock.mediablock--imageleft .mediablock__image {
+        width: 61px;
+        margin: 0 auto;
+
+        @include breakpoint(tablet) {
+            float: left;
+            margin-right: $gutter;
+        }
+    }
+
+    .mediablock .mediablock__content {
+        overflow: hidden;
+    }
+}

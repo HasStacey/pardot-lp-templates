@@ -1,0 +1,312 @@
+////////////////////////////////////////////////////////////////////////////
+
+// MICRO RESET
+// Everything should be border-box
+
+////////////////////////////////////////////////////////////////////////////
+*, 
+*:after, 
+*:before { 
+	@include box-sizing(border-box); 
+}
+
+body {
+	background-color: $c-ltgrey;
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+// BANDED COLOR WRAPPERS
+
+////////////////////////////////////////////////////////////////////////////
+
+// FULL WIDTH BANDED SECTIONS
+.banded {
+	// default: white background
+	background-color: $c-white;
+	padding-top: $gutter;
+	padding-bottom: $gutter;
+	
+	// @include padding-leader(1.5);
+	// @include padding-trailer(1.5);
+
+	// @include breakpoint(tablet) {
+	// 	@include padding-leader(2);
+	// 	@include padding-trailer(2);
+	// }
+
+	// // Half the padding
+	// &.banded--lesswhitespace {
+	// 	@include padding-leader(.5);
+	// 	@include padding-trailer(.5);
+
+	// 	@include breakpoint(tablet) {
+	// 		@include padding-leader();
+	// 		@include padding-trailer();
+	// 	}
+	// }
+
+	// // Half the padding on the bottom only
+	// &.banded--lessbottomwhitespace {
+	// 	@include padding-trailer(.5);
+
+	// 	@include breakpoint(tablet) {
+	// 		@include padding-trailer();
+	// 	}
+	// }
+
+	// // Half the padding on the top only
+	// &.banded--lesstopwhitespace {
+	// 	@include padding-leader(.5);
+
+	// 	@include breakpoint(tablet) {
+	// 		@include padding-leader();
+	// 	}
+	// }
+
+
+	// REMOVE BOTTOM PADDING
+	// Will override everything. 
+	// Use only for banded items that absolutely need it.
+	//----------------------------------------------------------------------
+	&.banded--nowhitespace {
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+
+	// // No padding on the bottom
+	// // For screenshots that sit directly on the bottom of the section
+	// &.banded--nobottomwhitespace {
+	// 	padding-bottom: 0 !important;
+	// }
+
+	// // No padding on the top
+	// &.banded--notopwhitespace {
+	// 	padding-top: 0 !important;
+	// }	
+
+
+
+
+
+
+
+
+
+	// Colored versions
+	// These are the only approved colors for banded sections
+	// DO NOT band sections in any other colors.
+	&.banded--blue {
+		background-color: $c-blue;
+		color: $c-white;
+
+		em,
+		.hgroup__subheading {
+			color: $c-yellow;
+		}
+
+		a:not(.button) {
+			@extend %links-over-primary;
+		}
+	}
+	&.banded--orange {
+		background-color: $c-orange;
+		color: $c-white;
+
+		em,
+		.hgroup__subheading {
+			color: $c-blue;
+		}
+
+		a:not(.button) {
+			@extend %links-over-secondary;
+		}
+	}
+	&.banded--slate {
+		background-color: $c-slate;
+		color: $c-white;
+
+		h1, 
+		h2, 
+		h3, 
+		h4, 
+		h5, 
+		h6,
+		.hgroup__subheading {
+			color: $c-white;
+		}
+
+		em {
+			color: $c-yellow;
+		}
+
+		a:not(.button) {
+			@extend %links-over-tertiary;
+		}
+	}
+	&.banded--ltgrey {
+		background-color: lighten($c-ltgrey, 5%);
+	}
+	&.banded--ltgrey-half {
+		background-color: $c-ltgrey-half;
+	}
+
+	&.banded--mdgrey {
+		background-color: $c-mdgrey;
+	}
+
+	&.banded--ltblue {
+		background-color: $c-ltblue;
+	}
+
+	&.banded--ltblue-half {
+		background-color: lighten($c-ltblue, 15%);
+	}
+
+	&.banded--green {
+		background-color: $c-green;
+	}
+
+	&.banded--dkblue {
+		background-color: $c-dkblue;
+		color: $c-white;
+
+		a:not(.button) {
+			@extend %links-over-dkblue;
+		}
+
+		.button:hover {
+			border-color: $c-white;
+			color: $c-white;
+		}
+	}
+
+	// Nested banded sections
+	.banded {
+		@extend .clearfix;
+	} 
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+// ROWS
+
+////////////////////////////////////////////////////////////////////////////
+
+.row {
+	@extend .clearfix;
+	margin: 0 auto;
+	max-width: $media-desktop-max;
+
+	&.banded {
+		padding-left: $gutter;
+		padding-right: $gutter;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+// COLUMNS
+
+////////////////////////////////////////////////////////////////////////////
+
+// GRID COLUMNS
+//--------------------------------------------------------------------------
+// Apply float and gutter to all columns
+.col-25,
+.col-33,
+.col-50,
+.col-66,
+.col-75,
+.col-80,
+.col-100 {
+	margin: $gutter;
+	float: left;
+
+	&.col--nowhitespace {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+// Fullwidth
+.col-100 {
+	width: calc(100% - #{$doublegutter});
+}
+
+// 80% width
+.col-80 {
+	// For those times when 100% is too wide for a single column
+	@extend .col-100;
+	@include breakpoint(tablet, min) {
+		$col-80-gutter: calc(#{$gutter} + 10%);
+		width: calc(80% - #{$doublegutter});
+		margin-left: $col-80-gutter;
+		margin-right: $col-80-gutter;
+	}
+}
+
+// GRID LOOP IN INCREMENTS OF 25%
+// Grid Output: .col-25, .col-50 and .col-75
+@for $i from 1 through 3 {
+	$num: $i * 25;
+	$percent: $num * 1%;
+	
+	// Grid items
+	.col-#{$num} {
+		// Full width on mobile
+		width: calc(100% - #{$doublegutter});
+	
+		// 50% width on tablet
+		@include breakpoint(tablet) {
+		width: calc(50% - #{$doublegutter});
+		}
+	
+		// Actual width on desktop
+		@include breakpoint(desktop) {
+			width: calc(#{$percent} - #{$doublegutter});
+		}
+	}
+}
+
+// GRID LOOP IN INCREMENTS OF 33%
+// Grid Output: .col-33 and .col-66
+@for $i from 1 through 2 {
+	$num: $i * 33;
+	$percent: $num * 1.01%;
+	
+	// Grid item
+	.col-#{$num} {
+		// Full width on mobile
+		width: calc(100% - #{$doublegutter});
+		
+		// 50% wide on tablet
+		@include breakpoint(tablet) {
+			width: calc(50% - #{$doublegutter});
+		}
+		
+		// Actual width on desktop
+		@include breakpoint(desktop) {
+			width: calc(#{$percent} - #{$doublegutter});
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+// OTHER LAYOUT ELEMENTS
+
+////////////////////////////////////////////////////////////////////////////
+
+hr {
+	// Default color is $c-blue but this can be overridden by 
+	// adding the .background-COLOR class to the element
+	background-color: $c-blue;
+	margin: 0; 
+	border: 0;
+	height: 15px;
+
+	&.hr--thin {
+		height: 2px;
+	}
+}

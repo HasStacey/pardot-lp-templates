@@ -1,0 +1,25 @@
+////////////////////////////////////////////////////////////////////////////
+
+// TOP NAV
+
+////////////////////////////////////////////////////////////////////////////
+.site-branding {
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+	top: 0;
+	box-shadow: 0 1px 5px 0 $c-mdgrey;
+
+	.col-100 {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	// TUNE logo
+	a {
+		min-height: 60px; // Height of the logo
+		background-size: 150px; // Width of the logo
+		background-position-x: center;
+		@include ir($image-tune-logo);
+	}
+}

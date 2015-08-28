@@ -1,0 +1,105 @@
+////////////////////////////////////////////////////////////////////////////
+
+// MENU
+
+////////////////////////////////////////////////////////////////////////////
+.menu {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	padding: 0 calc(#{$gutter} + 3px);
+	background-color: $c-white;
+	border-right: 1px solid $c-borders-lt;
+	z-index: $z-menu - 1; // Should sit just below the header on the z axis
+	visibility: hidden; // Prevent links from being highlighted off screen while tabbing through
+	font-size: 14px;
+	line-height: 1.75;
+	overflow-y: auto;
+	@include translateX(-768px); // Position it off screen for fly in.
+	@include single-transition(all, 0.2s, ease);
+	@include padding-leader(3.5);
+	@include padding-trailer();
+	@include breakpoint(tablet){
+		width: 275px;
+		@include translateX(-275px); // IE9, use "left" instead
+	}
+
+	// Open the menu
+	&.is-open {
+		visibility: visible;
+		@include translateX(0);
+	}
+
+	// The close icon
+	i.icon-cross {
+		position: absolute;
+		top: 99px;
+		right: 10px;
+		padding: 10px; // Increase the hit area;
+		cursor: pointer;
+	}
+
+	// Style the links
+	a {
+		text-decoration: none;
+	}
+
+	// The first level menu item should be uppercase
+	.navigation {
+		@include margin-trailer();
+
+		a:not(.button) {
+			@extend %secondary-link-colors;
+		}
+
+		.button {
+			min-width: 1px;
+			font-size: 12px;
+			@include margin-trailer();
+		}
+
+		@include breakpoint(tablet) {
+			.rad-button {
+				display: none;
+			}
+		}
+
+		.navigation__section {
+			// @include margin-leader();
+		}
+	}
+	// .navigation > li {
+	// 	text-transform: uppercase;
+	// 	@include margin-trailer();
+	// }
+
+	// Sub nav items in Title Case
+	// .subnavigation > li {
+	// 	text-transform: none;
+
+	// 	a {
+	// 		@extend %secondary-link-colors;
+	// 	}
+	// }
+
+	// Social Icons
+	.social {
+		@include translateY(-8px);
+		
+		a {
+			@extend %secondary-link-colors;
+			display: inline-block;
+			margin: 0;
+			padding: 0 6px;
+			@include adjust-font-size-to($fs-large);
+
+			&:first-of-type {
+				padding-left: 0;
+			}
+
+			.icon-vimeo {
+				font-size: 18px;
+			}
+		}
+	}
+}

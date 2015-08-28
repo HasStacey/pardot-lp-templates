@@ -1,0 +1,93 @@
+.form {
+	label {
+		display: block;
+		//@include adjust-font-size-to(14px);
+
+		span {
+			color: $c-red;
+			// @include adjust-font-size-to($fs-medium);
+			position: relative;
+			top: 5px;
+		}
+
+		&.error {
+			color: $c-red; 
+			font-size: $fs-small;
+		}
+	}
+
+	input:not([type=submit]) {
+		font-family: $f-primary;
+		font-size: $fs-small;
+		border: 1px solid #eaedee;
+		padding: 5px;
+		width: 100%;
+
+		background: #f9fbfb;
+
+		&:focus {
+			outline: 1px solid $c-slate;
+			border-color: $c-slate;
+		}
+		
+	}
+
+	input[type=submit] {
+		@extend .button;
+	}
+
+	&.form--inline-labels {
+		.input-group {
+		  display: block;
+		  margin: 10px 0;
+		  position: relative;
+		}
+
+		.input-group span {
+		  position: absolute;
+		  top: 7px;
+		  left: 8px;
+		  color: $c-ltgrey;
+		  z-index: 1;
+		  cursor: text;
+		  pointer-events: none; /* Prevent selection */
+		}
+
+		.required {
+			position: absolute;
+			@include adjust-font-size-to($fs-xlarge);
+			top: 0px;
+			left: auto;
+			right: 8px;
+			color: $c-red;
+		}
+
+		.input-group input, .input-group textarea, .input-group select {
+		  z-index: 0;
+		  padding: 6px 7px;
+		  margin: 0;
+		  font: inherit;
+		}
+
+		.input-group select {
+			appearance: none;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			width: 100%;
+			padding: 6px 7px;
+			border: 1px solid #eaedee;
+			border-radius: 0;
+			background-image: url('../img/common/icons/icon-select-arrow-slate.svg');
+			background-size: 10px;
+			background-position: calc(100% - 10px) center;
+			background-repeat: no-repeat;
+
+			&:focus {
+				outline: 1px solid $c-slate;
+				border-color: $c-slate;
+			}
+		}
+
+		.input-group textarea { padding-top: 9px; }
+	}
+}

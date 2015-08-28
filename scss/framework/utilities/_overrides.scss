@@ -1,0 +1,97 @@
+////////////////////////////////////////////////////////////////////////////
+
+// OVERRIDES
+// These classes will allow you to modify your modules slightly without
+// having to create a modified element.
+
+////////////////////////////////////////////////////////////////////////////
+
+
+// CENTER TEXT
+//--------------------------------------------------------------------------
+.text-centered {
+	text-align: center;
+}
+
+// SWITCH TEXT COLOR
+//--------------------------------------------------------------------------
+// The <em> tag applies the approved highlight color for every approved
+// banded background color. Use it before applying this class. If you still
+// need a different color, use this class on the appropriate element.
+
+.text-blue {
+	color: $c-blue;
+}
+.text-orange {
+	color: $c-orange;
+}
+.text-yellow {
+	color: $c-yellow;
+}
+.text-ltblue {
+	color: $c-ltblue;
+}
+.text-dkblue {
+	color: $c-dkblue;
+}
+.text-green {
+	color: $c-green;
+}
+.text-red {
+	color: $c-red;
+}
+.text-purple {
+	color: $c-purple;
+}
+.text-slate {
+	color: $c-slate;
+}
+.text-white {
+	color: $c-white;
+}
+.text-slate-half {
+	color: $c-slate-half;
+}
+
+// SWITCH BACKGROUND COLOR
+//--------------------------------------------------------------------------
+// Not for use as a banded background color. 
+// Use only the approved colors for banded sections.
+// See _layout.scss
+
+.background-blue {
+	background-color: $c-blue;
+}
+.background-orange {
+	background-color: $c-orange;
+}
+.background-yellow {
+	background-color: $c-yellow;
+}
+.background-ltblue {
+	background-color: $c-ltblue;
+}
+.background-green {
+	background-color: $c-green;
+}
+.background-red {
+	background-color: $c-red;
+}
+.background-slate {
+	background-color: $c-slate;
+}
+.background-ltgrey {
+	background-color: $c-ltgrey;
+}
+.background-mdgrey {
+	background-color: $c-mdgrey;
+}
+.background-dkgrey {
+	background-color: $c-dkgrey;
+}
+.background-black {
+	background-color: $c-black;
+}
+.background-white {
+	background-color: $c-white;
+}

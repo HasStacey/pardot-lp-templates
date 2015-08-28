@@ -1,0 +1,18 @@
+////////////////////////////////////////////////////////////////////////////
+
+// HERO
+
+////////////////////////////////////////////////////////////////////////////
+.hero {
+	height: 200px; // Match the height of the image
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	margin-top: 60px; // Clear the headerbar
+
+	img {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}

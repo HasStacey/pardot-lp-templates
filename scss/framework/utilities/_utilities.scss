@@ -1,0 +1,182 @@
+////////////////////////////////////////////////////////////////////////////
+
+// MIXINS
+
+////////////////////////////////////////////////////////////////////////////
+
+// IMAGE REPLACEMENT
+//--------------------------------------------------------------------------
+@mixin ir($image: $image-tune-logo){
+	background-image: $image;
+	overflow: hidden;
+	display: block;
+	text-indent: 101%;
+	white-space: nowrap;
+	background-repeat: no-repeat;
+
+}
+
+// MEDIA QUERY BREAKPOINTS
+//--------------------------------------------------------------------------
+@mixin breakpoint($point, $minmax: min) {
+	@if $minmax == min {
+		$minmax: min-width;
+	} @else if $minmax == max {
+		$minmax: max-width;
+	}
+
+	@if $point == desktop {
+		@media screen and ($minmax: $media-desktop-min) { @content; }
+	}
+	@else if $point == tablet {
+		@media screen and ($minmax: $media-tablet-min) { @content; }
+	}
+	@else if $point == mobile {
+		@media screen and (max-width: $media-mobile-max) { @content; }
+	} @else {
+		@media screen and ($minmax: $point) { @content; }
+	}
+}
+
+// CIRCLE AND DIAL IMAGES
+//--------------------------------------------------------------------------
+// 1. Prevents added width to the image when a border is set on it
+// 2. Prevents ugly outline between the edge of the image and the edge of the shadow
+@mixin set-image-as-circle($shadowWidth: 5px) {
+	border-radius: 50%;
+	box-shadow: 0 0 0 $shadowWidth $c-white; // 1
+	background-color: $c-white; // 2
+}
+
+@mixin set-image-as-dial($shadowWidth: 0px) {
+	border-radius: 100% 5% 100% 100%;
+	box-shadow: 0 0 0 $shadowWidth $c-white; // 1
+	background-color: $c-white; // 2
+}
+
+// KEYFRAMES AND ANIMATIONS
+//--------------------------------------------------------------------------
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation($args...) {
+  -webkit-animation: $args;
+  -moz-animation: $args;
+  -o-animation: $args;
+  animation: $args;
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////
+
+// EXTEND PLACEHOLDERS
+
+////////////////////////////////////////////////////////////////////////////
+
+// VERTICALLY ALIGN TEXT
+// You need to declare a height on the parent container 
+// http://www.vanseodesign.com/css/vertical-centering/
+.vertical-align-parent,
+%vertical-align-parent {
+	display: table;
+}
+%vertical-align-child,
+%vertical-align {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+// LINK COLOR STACKS
+//--------------------------------------------------------------------------
+// http://compass-style.org/reference/compass/typography/links/link_colors/
+
+// For all text & top level nav in the menu
+%primary-link-colors {
+	//                   normal,  hover,     active,  visited, focus
+	@include link-colors($c-blue, $c-slate, $c-blue, $c-blue, $c-blue);
+}
+
+// For header and secondary level nav in the menu
+%secondary-link-colors {
+	//                   normal,    hover,   active,  visited,   focus
+	@include link-colors($c-dkgrey, $c-blue, $c-blue, $c-dkgrey, $c-blue); 
+}
+
+// For footer
+%tertiary-link-colors {
+	//                   normal,    hover,   active,  visited,   focus
+	@include link-colors($c-mdgrey, $c-blue, $c-blue, $c-mdgrey, $c-blue); 
+}
+
+// Links in different color banded background situations
+%links-over-primary {
+	//                   normal,    hover,   active,  visited,   focus
+	@include link-colors($c-yellow, $c-orange, $c-yellow, $c-yellow, $c-orange);
+}
+%links-over-secondary {
+	//                   normal,    hover,   active,  visited,   focus
+	@include link-colors($c-dkgrey, $c-blue, $c-blue, $c-dkgrey, $c-blue);
+}
+%links-over-tertiary {
+	//                   normal,    hover,   active,  visited,   focus
+	@include link-colors($c-yellow, $c-ltblue, $c-yellow, $c-yellow, $c-ltblue);
+}
+%links-over-dkblue {
+	//                   normal,    hover,   active,  visited,   focus
+	@include link-colors($c-yellow, $c-ltblue, $c-yellow, $c-yellow, $c-ltblue);
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+// HELPER CLASSES
+
+////////////////////////////////////////////////////////////////////////////
+
+// HIDE-ON-{BREAKPOINT} HELPERS
+//--------------------------------------------------------------------------
+.is-hidden--mobile {
+	display: none;
+}
+@include breakpoint(tablet) {
+	.is-hidden--mobile {
+		display: inline-block;
+	}
+	.is-hidden--tablet {
+		display: none;
+	}
+}
+@include breakpoint(desktop) {
+	.is-hidden--mobile {
+		display: inline-block;
+	}
+	.is-hidden--desktop {
+		display: none;
+	}
+}
+
+// CLEARFIX
+//--------------------------------------------------------------------------
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+ 
+.clearfix:after {
+  clear: both;
+}

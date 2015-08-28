@@ -1,0 +1,105 @@
+.data-and-privacy {
+	.hero {
+		background-image: url('../img/mobile/hero/hero-data-and-privacy.jpg');
+		background-position: center;
+		text-shadow: 0 0 3px rgba($c-black, 0.5);
+
+		@include breakpoint(tablet) {
+			background-image: url('../img/desktop/hero/hero-data-and-privacy.jpg');
+		}
+	}
+
+	// Navigation Item
+	.navigation__data-and-privacy a {
+		color: $c-blue !important;
+		font-weight: $fw-bold;
+	}
+
+	.data-pledge,
+	.privacy-at-tune,
+	.best-practices {
+		h3 {
+			font-weight: $fw-light;
+		}
+
+		.flag__image {
+			padding-right: 45px;
+		}
+
+		@include breakpoint(768px, max) {
+
+			.flag__image {
+				display: block;
+				padding-right: 0;
+
+				img {
+					margin: 0 auto 2em;
+				}
+			}
+			.flag__body {
+				display: block;
+				clear: both;
+			}
+		}
+	}
+
+	.privacy-newsletter p {
+		max-width: 80%;
+		margin: 0 auto;
+	}
+
+	.form.subscribe {
+		width: 50%;
+		margin: 0 auto;
+
+		@include breakpoint(768px, max) {
+			width: 100%;
+		}
+
+		@include breakpoint(1024px, max) {
+			width: 80%;
+		}
+
+		label {
+			text-align: left;
+			font-size: 0.85em;
+		}
+
+		input[type=email] {
+			padding: 6px 5px;
+
+			&:focus {
+				outline: 1px solid $c-blue;
+				border-color: $c-blue;
+			}
+		}
+
+		tr:nth-of-type(even) {
+			background-color: transparent;
+		}
+
+		td {
+			border: 0;
+			padding: 0;
+			width: 100%;
+			vertical-align: top;
+
+			&:nth-child(2n) {
+				padding-left: 10px;
+			}
+		}
+	}
+
+	.best-practices,
+	.privacy-laws {
+		h4 {
+			text-transform: uppercase;
+		}
+
+		h4,
+		h5 {
+			font-weight: $fw-bold;
+			margin-bottom: 0;
+		}
+	}
+}

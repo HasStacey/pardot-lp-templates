@@ -1,0 +1,137 @@
+.resources {
+	.hero {
+		background-image: url('../img/mobile/hero/hero-resources.jpg');
+		background-position: center 60px;
+		background-size: 120%;
+
+		@include breakpoint(tablet) {
+			background-image: url('../img/desktop/hero/hero-resources.jpg');
+		}
+
+		@include breakpoint(599px,max) {
+			background-size: 220%;
+		}
+
+		h4 {
+			color: $c-black;
+		}
+	}
+
+	.hero--buttons {
+		@include breakpoint(599px,max) {
+			margin-bottom: 20px;
+		}
+	}
+
+	// Navigation Item
+	.navigation__resources a {
+		color: $c-blue !important;
+		font-weight: $fw-bold;
+	}
+
+	// RESOURCES TILES
+	//--------------------------------------------------------------------------
+	.resource-tile {
+		position: relative;
+		background-color: $c-white;
+		margin: $gutter;
+		float: left;
+
+		@include breakpoint(tablet) {
+			$col-80-gutter: calc(#{$gutter} + 10%);
+			width: calc(80% - #{$doublegutter});
+			margin-left: $col-80-gutter;
+			margin-right: $col-80-gutter;
+		}
+
+		@include breakpoint(desktop) {
+			width: calc(50% - #{$doublegutter});
+			margin: $gutter;
+		}
+
+		&:nth-of-type(2n+1) {
+			clear: both;
+		}
+
+		&.resource-tile--guides h5 {
+			color: $c-orange;
+		}
+
+		&.resource-tile--best-practices h5 {
+			color: $c-ltblue;
+		}
+
+		&.resource-tile--research h5 {
+			color: $c-green;
+		}
+
+		&.resource-tile--webinars h5 {
+			color: $c-yellow;
+		}
+
+		.resource-tile__title {
+			@extend %vertical-align-parent;
+			padding: $doublegutter;
+			background: $c-slate;
+			width: 100%;
+			text-transform: uppercase;
+			@include padding-leader(1.25);
+			@include padding-trailer(1.25);
+
+			h5 {
+				font-size: 0.85em;
+				line-height: 1.5;
+
+				span {
+					font-size: 1.25em;
+					display: block;
+					color: $c-white;
+					font-weight: $fw-bold;
+				}
+			}
+		}
+
+		&.resource-tile--webinars .resource-tile__title {
+			min-height: 119px;
+		}
+
+		.resource-tile__content {
+			padding: $doublegutter;
+		}
+
+		.resource-tile__image img {
+			display: block;
+			margin: 0 auto;
+			max-height: 100px;
+		}
+
+		.resource-tile__meta {
+			@include padding-leader(.25);
+			@include padding-trailer(.25);
+			background-color: $c-ltblue;
+			color: $c-white;
+			font-size: $fs-xsmall;
+
+			span {
+				float: right;
+			}
+		}
+
+		.resource-tile__description {
+			line-height: 1.75;
+			padding: $gutter * 1.5 0;
+
+			@include breakpoint(desktop) {
+				min-height: 218px;
+			}
+		}   
+
+		.resource-tile__link {
+
+			.button {
+				display: block;
+			}
+		}
+
+	}
+}

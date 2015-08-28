@@ -1,0 +1,24 @@
+.training {
+	.hero {
+		background-image: url('../img/mobile/hero/hero-training.jpg');
+
+		@include breakpoint(tablet){
+			background-image: url('../img/desktop/hero/hero-training.jpg');
+		}
+	}
+
+	.flag__image {
+		text-align: center;
+	}
+
+	.countdown {
+		color: $c-red;
+		font-weight: $fw-bold;
+	}
+
+	// Navigation Item
+	.navigation__training a {
+		color: $c-blue !important;
+		font-weight: $fw-bold;
+	}
+}

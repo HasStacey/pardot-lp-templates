@@ -1,0 +1,26 @@
+////////////////////////////////////////////////////////////////////////////
+
+// TABLES
+
+////////////////////////////////////////////////////////////////////////////
+
+table {
+
+	th {
+		font-weight: $fw-bold;
+		background-color: $c-slate;
+		color: $c-white;
+		border: 1px solid $c-slate;
+		padding: 10px $gutter;
+	}
+
+	&:not(.contactdetails) tr:nth-of-type(even) {
+		background-color: lighten($c-ltgrey, 5%);
+	}
+
+	td {
+		border: 1px solid $c-borders-lt;
+		padding: 10px $gutter;
+	}
+	
+}

@@ -1,0 +1,102 @@
+////////////////////////////////////////////////////////////////////////////
+
+// Variables
+
+////////////////////////////////////////////////////////////////////////////
+
+// FONTS
+//--------------------------------------------------------------------------
+$f-primary: 'Gotham A', 'Gotham B', Gotham, Helvetica;
+
+// FONT WEIGHTS
+//--------------------------------------------------------------------------
+$fw-light: 300;
+$fw-normal: 400;
+$fw-bold: 500;
+$fw-black: 800;
+
+// FONT SIZES
+//--------------------------------------------------------------------------
+$fs-xxxlarge: 3.75em; 	// (60px) -- H1
+$fs-xxlarge: 3em; 		// (48px) -- H1
+$fs-xlarge: 2em; 		// (32px) -- H2
+$fs-large: 1.5em; 		// (24px) -- H3
+$fs-medium: 1.25em;		// (20px) -- H4
+$fs-small: 1em; 		// (16px) -- H5 & P
+$fs-xsmall: 0.75em;		// (12px) -- H6, Small button & Captions
+
+// GLOBAL VALUES
+//--------------------------------------------------------------------------
+$border-radius: 4px;
+$radius-circle: 100%;
+$z-menu: 10000; // Z-Index of the menu
+$gutter: 20px; // Space on the left and right of each grid item
+$doublegutter: $gutter * 2; // For simpler grid maths.
+
+// MEDIA QUERY BREAKPOINTS
+//--------------------------------------------------------------------------
+$media-desktop-max: 1200px;
+$media-desktop-min: 1024px;
+$media-tablet-max: calc(#{$media-desktop-min} - 1px);
+$media-tablet-min: 768px;
+$media-mobile-max: calc(#{$media-tablet-min} - 1px);
+
+// COLORS
+//--------------------------------------------------------------------------
+// TUNE Blues
+$c-blue: #007aff;
+$c-ltblue: #7ccbea;
+$c-mdblue: #006cb4;
+$c-dkblue: #071d49;
+
+// TUNE Dynamics
+$c-green: #7cb82f;
+$c-orange: #ffa300;
+$c-yellow: #fce85d;
+$c-red: #d82949;
+$c-purple: #4c4184;
+
+// TUNE Neutrals
+$c-slate: #3d5265;
+$c-ltgrey: #d9d9d6;
+$c-mdgrey: #bbbcbc;
+$c-dkgrey: #707372;
+$c-black: #101820;
+$c-white: #ffffff;
+
+// TUNE Neutrals Halftones
+$c-slate-half: #9ea8b2;
+$c-ltgrey-half: #edf2f1;
+$c-mdgrey-half: #d4d7db;
+$c-dkgrey-half: #a9abac;
+$c-black-half: #878b8f;
+
+
+// COLOR ROLES
+//--------------------------------------------------------------------------
+
+// Nav Links
+$c-menu-link: $c-dkgrey;
+$c-menu-link-hover: $c-blue;
+$c-menu-link-active: $c-blue;
+
+// Subnav Links
+$c-menu-subnav-link: $c-dkgrey;
+$c-menu-subnav-link-hover: $c-blue;
+
+// Basic text styles
+$c-headings: $c-black;
+$c-text: $c-black;
+
+// Borders
+$c-borders-lt: $c-ltgrey;
+
+
+// SITE BRAND
+//--------------------------------------------------------------------------
+$image-tune-logo: url('http://www.tune.com/img/common/brand/header/tune-logo-sitebrand.png');
+
+
+
+
+

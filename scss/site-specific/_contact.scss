@@ -1,0 +1,90 @@
+////////////////////////////////////////////////////////////////////////////
+
+// CONTACT PAGE STYLES
+
+////////////////////////////////////////////////////////////////////////////
+.contact {
+	.hero {
+		background-image: url('../img/mobile/hero/hero-contact.jpg');
+		background-position: center 60px;
+
+		@include breakpoint(tablet) {
+			background-image: url('../img/desktop/hero/hero-contact.jpg');
+		}
+	}
+
+	// Navigation Item
+	.navigation__contact a {
+		color: $c-blue !important;
+		font-weight: $fw-bold;
+	}
+
+	.contactdetails--tune {
+		width: 50%;
+		margin: $doublegutter auto 0;
+
+		td:first-of-type {
+			width: 47%;
+		}
+	}
+
+	.locationsmap {
+		display: none;
+		@include breakpoint(tablet) {
+			display: block;
+		}
+	}
+
+	.contact-emailcta {
+		text-align: center;
+
+		@include breakpoint(desktop) {
+			width: 995px;
+			margin: 0 auto;
+		}
+
+		// Block elements
+		div {
+			@include breakpoint(tablet){
+				display: inline-block;
+				margin-right: 125px;
+
+				&:last-of-type{
+					margin-right: 0;
+				}
+			}
+			@include breakpoint(desktop){
+				float: left;
+				width: 460px;
+
+				&:last-of-type {
+					width: 410px;
+				}
+			}
+		}
+
+		// Inline elements
+		a {
+			text-decoration: none;
+			color: $c-white;
+
+			&:visited,
+			&:active,
+			&:hover {
+				color: $c-white;
+			}
+		}
+
+		span {
+			display: block;
+			color: $c-white;
+			@include adjust-font-size-to(24px);
+			//@include margin-trailer(.25);
+			@include breakpoint(desktop){
+				@include adjust-font-size-to(30px);
+				padding-top: 11px;
+			}
+		}
+
+	}
+}

@@ -1,0 +1,110 @@
+////////////////////////////////////////////////////////////////////////////
+
+// FOOTER
+
+////////////////////////////////////////////////////////////////////////////
+.footer {
+	@extend .clearfix;
+	text-align: center;
+	text-transform: uppercase;
+	color: $c-mdgrey;
+	@include adjust-font-size-to($fs-xsmall);
+	@include padding-leader();
+	@include padding-trailer();
+
+	// Different color links than the rest of the site
+	a {
+		@extend %tertiary-link-colors;
+		text-decoration: none;
+
+	}
+
+	// Footer columns
+	.footer__col {
+		width: 100%;
+		float: left;
+		height: 48px;
+
+		@include breakpoint(855px, min) {
+			width: 20%;
+			height: 32px;
+			line-height: 32px;
+		}
+	}
+
+	// Logo
+	.footer__col--branding {
+		// Do not display in mobile
+		padding-left: $gutter;
+		display: none;
+
+		// Display in tablet and desktop
+		@include breakpoint(855px, min) {
+			display: block;
+		}
+
+		// TUNE Logo
+		a {
+			@include ir($image-tune-logo);
+			background-size: 100px;
+			background-position-y: -5px;
+		}
+	}
+
+	// Colophon & Copyrights
+	.footer__col--colophon {
+
+		// Should be wide on tablet & desktop
+		@include breakpoint(855px, min) {
+			width: 60%;
+		}
+
+		// Remove bullets and margin
+		ul {
+			list-style-type: none;
+
+			@include breakpoint(855px, min) {
+				margin-bottom: 0;
+			}
+		}
+
+		// Display inline & don't wrap text for individual list items
+		li {
+			display: inline;
+			margin: 0 10px;
+			white-space: nowrap;
+
+			// Add a line break after the 2nd list item
+			// http://stackoverflow.com/a/17048164
+			// Mobile only
+			&:nth-of-type(2n):after{
+				content: '\A';
+				white-space: pre;
+				padding: 0;
+			}
+
+			// Remove wrap for higher resolutions
+			@include breakpoint(855px, min) {
+				&:nth-of-type(2n):after {
+					content: '';
+				}
+			}
+		}
+	}
+
+	// The TRUSTe badge
+	.footer__col--truste {
+		text-align: right; 
+
+		img {
+			max-height: 32px;
+			display: block;
+			margin: $gutter auto 0;
+
+			@include breakpoint(855px, min) {
+				display: inline;
+				margin: 0 $gutter 0 0;
+			}
+		}
+	}
+}
