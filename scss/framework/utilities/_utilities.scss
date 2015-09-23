@@ -54,6 +54,99 @@
 	background-color: $c-white; // 2
 }
 
+// SMARTER FONT SIZES
+//--------------------------------------------------------------------------
+@mixin set-type-as-h1(){
+	font-size: $fs-large;
+	line-height: $lh-for-large;
+	margin-bottom: 16px;
+
+	@include breakpoint(tablet) {
+		font-size: $fs-xlarge;
+		line-height: $lh-for-xlarge;
+	}
+
+	@include breakpoint(desktop) {
+		font-size: $fs-xxlarge;
+		line-height: $lh-for-xxlarge;
+	}
+}
+@mixin set-type-as-h2(){
+	font-size: $fs-medium;
+	line-height: $lh-for-medium;
+	margin-bottom: 16px;
+
+	@include breakpoint(tablet) {
+		font-size: $fs-large;
+		line-height: $lh-for-large;
+	}
+
+	@include breakpoint(desktop) {
+		font-size: $fs-xlarge;
+		line-height: $lh-for-xlarge;
+	}
+}
+@mixin set-type-as-h3(){
+	font-size: $fs-small;
+	line-height: $lh-for-small;
+	margin-bottom: 16px;
+
+	@include breakpoint(tablet) {
+		font-size: $fs-medium;
+		line-height: $lh-for-medium;
+	}
+
+	@include breakpoint(desktop) {
+		font-size: $fs-large;
+		line-height: $lh-for-large;
+	}
+}
+@mixin set-type-as-h4(){
+	font-size: $fs-small;
+	line-height: $lh-for-small;
+	margin-bottom: 16px;
+
+	@include breakpoint(tablet) {
+		font-size: $fs-small;
+		line-height: $lh-for-small;
+	}
+
+	@include breakpoint(desktop) {
+		font-size: $fs-medium;
+		line-height: $lh-for-medium;
+	}
+}
+@mixin set-type-as-h5(){
+	font-size: $fs-small;
+	line-height: $lh-for-small;
+	margin-bottom: 16px;
+
+	@include breakpoint(tablet) {
+		font-size: $fs-small;
+		line-height: $lh-for-small;
+	}
+
+	@include breakpoint(desktop) {
+		font-size: $fs-small;
+		line-height: $lh-for-small;
+	}
+}
+@mixin set-type-as-h6(){
+	font-size: $fs-xsmall;
+	line-height: $lh-for-xsmall;
+	margin-bottom: 16px;
+
+	@include breakpoint(tablet) {
+		font-size: $fs-xsmall;
+		line-height: $lh-for-xsmall;
+	}
+
+	@include breakpoint(desktop) {
+		font-size: $fs-xsmall;
+		line-height: $lh-for-xsmall;
+	}
+}
+
 // KEYFRAMES AND ANIMATIONS
 //--------------------------------------------------------------------------
 

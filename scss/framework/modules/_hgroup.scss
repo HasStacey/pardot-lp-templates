@@ -5,13 +5,15 @@
 ////////////////////////////////////////////////////////////////////////////
 .hgroup {
 	h1 {
-		// font-size: 2em;
 		color: $c-blue;
+		margin-bottom: 0;
 	}
 
 	h2 {
+		@include set-type-as-h5();
 		text-transform: uppercase;
 		color: $c-slate;
 		font-weight: $fw-bold;
+		margin-bottom: 0;
 	}
 }

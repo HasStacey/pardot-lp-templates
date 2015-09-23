@@ -26,44 +26,6 @@ body {
 	background-color: $c-white;
 	padding-top: $gutter;
 	padding-bottom: $gutter;
-	
-	// @include padding-leader(1.5);
-	// @include padding-trailer(1.5);
-
-	// @include breakpoint(tablet) {
-	// 	@include padding-leader(2);
-	// 	@include padding-trailer(2);
-	// }
-
-	// // Half the padding
-	// &.banded--lesswhitespace {
-	// 	@include padding-leader(.5);
-	// 	@include padding-trailer(.5);
-
-	// 	@include breakpoint(tablet) {
-	// 		@include padding-leader();
-	// 		@include padding-trailer();
-	// 	}
-	// }
-
-	// // Half the padding on the bottom only
-	// &.banded--lessbottomwhitespace {
-	// 	@include padding-trailer(.5);
-
-	// 	@include breakpoint(tablet) {
-	// 		@include padding-trailer();
-	// 	}
-	// }
-
-	// // Half the padding on the top only
-	// &.banded--lesstopwhitespace {
-	// 	@include padding-leader(.5);
-
-	// 	@include breakpoint(tablet) {
-	// 		@include padding-leader();
-	// 	}
-	// }
-
 
 	// REMOVE BOTTOM PADDING
 	// Will override everything. 
@@ -76,22 +38,14 @@ body {
 
 	// // No padding on the bottom
 	// // For screenshots that sit directly on the bottom of the section
-	// &.banded--nobottomwhitespace {
-	// 	padding-bottom: 0 !important;
-	// }
+	&.banded--nobottomwhitespace {
+		padding-bottom: 0 !important;
+	}
 
-	// // No padding on the top
-	// &.banded--notopwhitespace {
-	// 	padding-top: 0 !important;
-	// }	
-
-
-
-
-
-
-
-
+	// No padding on the top
+	&.banded--notopwhitespace {
+		padding-top: 0 !important;
+	}	
 
 	// Colored versions
 	// These are the only approved colors for banded sections
@@ -227,6 +181,10 @@ body {
 		margin-top: 0;
 		margin-bottom: 0;
 	}
+
+	&.banded {
+		padding: $gutter; // Creates space on left/right of column
+	}
 }
 
 // Fullwidth
@@ -284,6 +242,17 @@ body {
 		@include breakpoint(tablet) {
 			width: calc(50% - #{$doublegutter});
 		}
+
+		// Tablet Only!
+		@media screen and (min-width: 768px) and (max-width: 1023px) {
+			&:nth-of-type(2n + 1) {
+				clear: both;
+			}
+
+			&:nth-child(3):nth-last-child(1) {
+				width: calc(100% - #{$doublegutter});
+			}
+		}
 		
 		// Actual width on desktop
 		@include breakpoint(desktop) {
@@ -308,5 +277,67 @@ hr {
 
 	&.hr--thin {
 		height: 2px;
+	}
+}
+
+.content {
+	margin-top: $gutter;
+
+	img {
+		display: block;
+		margin-bottom: $gutter;
+	}
+}
+
+.fullwidth {
+	margin-top: $doublegutter;
+}
+
+.extra-content {
+	text-align: center;
+
+	&.extra-content--longform {
+		margin-top: $doublegutter;
+	}
+
+	img {
+		display: block;
+		margin: 0 auto;
+		margin-bottom: $gutter;
+	}
+
+	h6 {
+		color: $c-dkgrey;
+		font-weight: $fw-bold;
+		text-transform: uppercase;
+		margin-bottom: 0;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+
+	a {
+		@include set-type-as-h6();
+		position: relative; 
+		text-transform: capitalize;
+		text-decoration: none; 
+
+		&:before {
+			content: ' ';
+			width: 12px;
+			height: 12px;
+			position: absolute;
+			top: 1px; 
+			left: -20px;
+			text-decoration: none;
+			background-image: url('http://storage.pardot.com/23402/79818/2016_pardot_lp_templates_link_indicator.svg');
+			background-repeat: no-repeat;
+			background-size: 12px;
+
+			&:hover {
+
+			}
+		}
 	}
 }

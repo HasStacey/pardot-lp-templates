@@ -1,93 +1,464 @@
-.form {
-	label {
-		display: block;
-		//@include adjust-font-size-to(14px);
+////////////////////////////////////////////////////////////////////////////
 
-		span {
-			color: $c-red;
-			// @include adjust-font-size-to($fs-medium);
-			position: relative;
-			top: 5px;
-		}
+// FORMS
+// -------------------------------------------------------------------------
 
-		&.error {
-			color: $c-red; 
-			font-size: $fs-small;
-		}
+// Ensure page variable `$includeValidation = true;`
+// If country dropdown is needed, ensure page variable `$includeCountrySelector = true;`
+
+// STANDARD FORM SYNTAX
+// NOTE: The parent <section> container should have the ID 'lead-form': <section id="lead-form" class="banded">
+// NOTE: Pardot Success Location: http://www.tune.com/PAGE-NAME-HERE/?message=success#lead-form
+// NOTE: Pardot Error Location: http://www.tune.com/PAGE-NAME-HERE/?message=error#lead-form
+
+// <form action="{PARDOT FORM HANDLER URL}" method="post" class="form">
+
+// 	<div class="form__content">
+// 		<h1 class="text-centered">Whatever text content you want.</h1>
+// 	</div>
+
+// 	<div class="notification notification--success js-parameter--success" style="display: none;">
+// 		<p>Thank you for your interest!</p>
+// 		<p>We've received your request and you'll hear back from our team shortly.</p>
+// 	</div>
+
+// 	<div class="notification notification--error js-parameter--error" style="display: none;">
+// 		<p>All fields are required.</p>
+// 	</div>
+
+// 	<p class="form__fieldgroup">
+// 		<label class="fieldgroup__label" for="first-name"><span class="is-required">*</span> First Name</label>
+// 		<input type="text" id="first-name" name="fname" required>
+// 	</p>
+
+// 	<p class="form__fieldgroup">
+// 		<label class="fieldgroup__label" for="last-name"><span class="is-required">*</span> Last Name</label>
+// 		<input type="text" id="last-name" name="lname" required>
+// 	</p>
+
+// 	<p class="form__fieldgroup">
+// 		<label class="fieldgroup__label" for="company-name"><span class="is-required">*</span> Company Name</label>
+// 		<input type="text" id="company-name" name="company" required>
+// 	</p>
+
+// 	<p class="form__fieldgroup">
+// 		<label class="fieldgroup__label" for="email"><span class="is-required">*</span> Company Email</label>
+// 		<input type="text" id="email" name="email" required>
+// 	</p>
+
+// 	<p class="form__fieldgroup">
+// 		<label class="fieldgroup__label" for="phone"><span class="is-required">*</span> Phone</label>
+// 		<input type="text" id="phone" name="phone" required>
+// 	</p>
+
+// 	<!-- THIS FIELD IS REQUIRED FOR ALMOST ALL FORMS - REACH OUT TO MEGAN M. BEFORE REMOVING -->
+// 	<p class="form__fieldgroup">
+// 		<label class="fieldgroup__label" for="global-region"><span class="is-required">*</span> Global Region</label>
+// 		<select name="global-region" id="global-region" required>
+// 			<option disabled selected> -- select an option -- </option>
+// 			<option value="APAC">APAC</option>
+// 			<option value="EMEA">EMEA</option>
+// 			<option value="North America">North America</option>
+// 			<option value="South America">South America</option>
+// 		</select>
+// 	</p>
+
+// 	<p class="form__fieldgroup">
+// 		<label class="fieldgroup__label">Radios and Checkboxes</label>
+// 		<input type="radio | checkbox" name="{PARDOT EXTERNAL FIELD NAME}" id="radio-red" value="Red" required /><label for="radio-red">Red</label>
+// 		<input type="radio | checkbox" name="{PARDOT EXTERNAL FIELD NAME}" id="radio-blue" value="Blue" /><label for="radio-blue">Blue</label>
+// 	</p>
+
+	// <!-- Submit it -->
+	// <p class="form_fieldgroup">
+	// 	<input class="button" type="submit" value="Set it up!">
+	// </p>
+
+// 	<!-- HONEYPOT: NO EDITING REQUIRED -->
+// 	<p class="form__fieldgroup" style="position: absolute; left: -9999px; top: -9999px;">
+// 		<label for="pardot_extra_field">Comments</label>
+// 		<input type="text" id="pardot_extra_field" name="pardot_extra_field">
+// 	</p class="form__fieldgroup">
+
+// 	<p class="form__footnote"><span class="is-required">*</span> indicates required field</p>
+// </form>
+
+
+// SUBSCRIBE FORM SYNTAX (Inline with Button on the right)
+// NOTE: The parent <section> container should have the id 'subscribe': <section id="subscribe" class="banded">
+// NOTE: Parent grid container should be .col-80
+// <form class="form form--subscribe" id="subscribe-form" action="{PARDOT FORM HANDLER URL}" method="post">
+
+// 	<div class="form__content">
+// 		<h1 class="text-centered">Whatever text content you want.</h1>
+// 	</div>
+
+// 	<div class="notification notification--success js-parameter--success" style="display: none;">
+// 		<h4 class="text-centered">Thank you for subscribing!</h4>
+// 	</div>
+
+// 	<div class="notification notification--error js-parameter--error" style="display: none;">
+// 		<p>Please enter a valid email address.</p>
+// 	</div>
+
+// 	<table>
+// 		<tr>
+// 			<td><input type="email" name="email" id="email" placeholder="Email" required /></td>
+// 			<td><input type="submit" value="Subscribe Now" class="button--small button--slate" /></td>
+// 		</tr>
+// 	</table>
+
+// </form>
+
+
+////////////////////////////////////////////////////////////////////////////
+
+// BLOCK ALL THE THINGS.
+label,
+select,
+input:not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]) {
+	display: block;
+}
+
+// SETUP LABELS
+label {
+	@include set-type-as-h6();
+
+	.banded--slate & {
+		color: $c-ltgrey;
 	}
 
-	input:not([type=submit]) {
-		font-family: $f-primary;
-		font-size: $fs-small;
-		border: 1px solid #eaedee;
-		padding: 5px;
+	&.fieldgroup__label {
+		font-weight: $fw-bold;
+		text-transform: uppercase;
+		margin-bottom: 0;
+	}
+}
+
+// SETUP FIELD STYLES
+// Ignore buttons, checkboxes and radios
+input:not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+	@include set-type-as-h6();
+	margin-bottom: 0;
+	padding: 5px;
+	width: 100%;
+	background-color: $c-ltgrey-half;
+	color: $c-slate;
+	font-family: $f-primary;
+	letter-spacing: 1px;
+
+	.banded--slate & {
+		background-color: rgba($c-white, 0.1);
+		color: $c-white;
+	}
+
+	.banded--ltgrey & {
+		background-color: $c-white;
+		color: $c-black;
+	}
+}
+
+// CHECKBOX AND RADIO OPTION LABELS
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+	display: inline;
+	padding: 0 10px 0 5px;
+}
+
+// SETUP COLOR INPUTS
+input[type="color"] {
+	height: 40px;
+	border-color: transparent;
+}
+
+// SETUP RANGE INPUTS
+input[type="range"] {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 40px;
+	margin: inherit; // Removes wonky margins in FF
+
+	&::-webkit-slider-runnable-track {
 		width: 100%;
+		height: 8px;
+		background: $c-slate;
+		border: none;
+		border-radius: $border-radius;
 
-		background: #f9fbfb;
-
-		&:focus {
-			outline: 1px solid $c-slate;
-			border-color: $c-slate;
+		.banded--ltgrey & {
+			background: $c-ltgrey;
 		}
-		
 	}
 
-	input[type=submit] {
-		@extend .button;
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		height: 16px;
+		width: 16px;
+		border-radius: 50%;
+		background: $c-blue;
+		margin-top: -4px;
+
+		.banded--slate & {
+			background: $c-ltblue;
+		}
+	}
+}
+
+// SETUP SELECTS
+select {
+	padding: 6px 5px;
+	position: relative;
+	appearance: none; // Remove default arrows
+	-moz-appearance: none; // Remove default arrows
+	-webkit-appearance: none; // Remove default arrows
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+
+	// Include custom arrows
+	&:not([multiple]) {
+		// background-image: url('http://storage.pardot.com/23402/78250/2016_pardot_lp_templates_icon_select_arrow_slate.svg');
+		background-image: url('http://www.tune.com/img/common/icons/icon-select-arrow-slate.svg');
+		background-repeat: no-repeat;
+		background-position: right 10px center;
+		background-size: 10px;
+
+		.banded--slate & {
+			// background-image: url('http://storage.pardot.com/23402/78252/2016_pardot_lp_templates_icon_select_arrow_white.svg');
+			background-image: url('http://www.tune.com/img/common/icons/icon-select-arrow-white.svg');
+		}
+	}
+}
+
+// SETUP MULTIPLE SELECTS
+select[multiple] {
+	padding: 0;
+
+	& option {
+		padding: 5px;
+	}
+}
+
+// SETUP FILE INPUT
+input[type="file"] {
+	line-height: 1ex; // Centers text to button
+	padding: 9px 5px;
+}
+
+
+// REDEFINE :FOCUS STATES
+input,
+select,
+textarea {
+	border: 2px solid transparent;
+}
+
+input:not([type="submit"]):not([type="reset"]):not([type="button"]):focus,
+select:focus,
+textarea:focus {
+	outline: 0;
+	border-color: $c-ltblue;
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+	outline: 2px solid $c-ltblue;
+}
+
+// VALIDATION INDICATORS
+input.js-valid,
+select.js-valid,
+textarea.js-valid {
+	border-color: $c-green;
+}
+
+input.js-error,
+select.js-error,
+textarea.js-error {
+	border-color: $c-red;
+
+	.banded--dkblue & {
+		border-color: $c-blue;
 	}
 
-	&.form--inline-labels {
-		.input-group {
-		  display: block;
-		  margin: 10px 0;
-		  position: relative;
+	.banded--slate & {
+		border-color: $c-yellow;
+	}
+}
+
+label.js-error {
+	color: $c-red;
+
+	.banded--dkblue & {
+		color: $c-ltblue;
+	}
+
+	.banded--slate & {
+		color: $c-yellow;
+	}
+}
+
+// REQUIRED INDICATORS
+span.is-required {
+	visibility: hidden;
+	display: none; // Hides pre-rendered required marker
+
+	.required & {
+		display: inline; // Shows required marker only if field is set as required.
+	}
+
+	&:before {
+		visibility: visible;
+		content: '\273B';
+		color: $c-red;
+		height: 24px;
+		width: auto;
+		display: inline-block;
+
+		.banded--dkblue & {
+			color: $c-blue;
 		}
 
-		.input-group span {
-		  position: absolute;
-		  top: 7px;
-		  left: 8px;
-		  color: $c-ltgrey;
-		  z-index: 1;
-		  cursor: text;
-		  pointer-events: none; /* Prevent selection */
+		.banded--slate & {
+			color: $c-yellow;
+		}
+	}
+
+	// IE. 
+	.no-smil & {
+		visibility: visible;
+		color: $c-red;
+		@include set-type-as-h3();
+
+		&:before {
+			display: none;
+		}
+	}
+
+	.no-smil .banded--dkblue & {
+		color: $c-blue;
+	}
+
+	.no-smil .banded--slate & {
+		color: $c-yellow;
+	}
+}
+
+// SETUP BUTTONS
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+	@extend .button;
+	letter-spacing: 0;
+	margin-bottom: 16px;
+}
+
+// FORM PARTS
+// .form {}
+
+// .form__fieldgroup {}
+
+// .fieldgroup__label {}
+
+.form__content {
+	margin-bottom: $gutter;
+
+	h1, h2, h3, h4, h5, h6 {
+		margin-bottom: 0;
+
+		& + p {
+			margin-top: 16px;
+		}
+	}
+}
+
+.form__footnote {
+	@include set-type-as-h6();
+}
+
+
+.form.form--subscribe {
+
+	table {
+		width: 80%;
+		margin: 0 auto;
+
+		@include breakpoint(tablet) {
+			width: 80%;
 		}
 
-		.required {
-			position: absolute;
-			@include adjust-font-size-to($fs-xlarge);
-			top: 0px;
-			left: auto;
-			right: 8px;
-			color: $c-red;
+		@include breakpoint(desktop) {
+			width: 60%;
+		}
+	}
+
+	tr:nth-of-type(even) {
+		background-color: transparent; // Reset
+	}
+
+	td {
+		display: block;
+		border: 0;
+		padding: 0;
+		width: 100%;
+		vertical-align: top;
+
+		&:nth-child(2n) {
+			padding: 10px 0 0;
 		}
 
-		.input-group input, .input-group textarea, .input-group select {
-		  z-index: 0;
-		  padding: 6px 7px;
-		  margin: 0;
-		  font: inherit;
-		}
+		@include breakpoint(tablet) {
+			display: table-cell;
 
-		.input-group select {
-			appearance: none;
-			-moz-appearance: none;
-			-webkit-appearance: none;
-			width: 100%;
-			padding: 6px 7px;
-			border: 1px solid #eaedee;
-			border-radius: 0;
-			background-image: url('../img/common/icons/icon-select-arrow-slate.svg');
-			background-size: 10px;
-			background-position: calc(100% - 10px) center;
-			background-repeat: no-repeat;
-
-			&:focus {
-				outline: 1px solid $c-slate;
-				border-color: $c-slate;
+			&:nth-child(2n) {
+				padding: 0 0 0 10px;
 			}
 		}
+	}
 
-		.input-group textarea { padding-top: 9px; }
+	label {
+		text-align: left;
+		font-size: 0.85em;
+	}
+
+	input[type=email] {
+		border-radius: $border-radius;
+	}
+
+	// Set button to the same height as the email input
+	input[type="submit"] {
+		@extend .button--small;
+		padding: 4px 10px;
+	}
+}
+
+// NOTIFICATIONS
+.notification {
+	position: relative;
+	background-color: $c-yellow;
+	border-radius: $border-radius;
+	padding: $gutter;
+	margin: $gutter auto;
+	text-align: center;
+
+	&.notification--success {
+		background-color: $c-green;
+		color: $c-white;
+	}
+
+	&.notification--error {
+		background-color: $c-red;
+		color: $c-white;
+	}
+
+	&.notification--message {
+		background-color: $c-ltblue;
+	}
+
+	.form.form--subscribe & {
+		width: 60%;
 	}
 }

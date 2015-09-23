@@ -3,6 +3,7 @@
 // Variables
 
 ////////////////////////////////////////////////////////////////////////////
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic);
 
 // FONTS
 //--------------------------------------------------------------------------
@@ -10,20 +11,31 @@ $f-primary: 'Gotham A', 'Gotham B', Gotham, Helvetica;
 
 // FONT WEIGHTS
 //--------------------------------------------------------------------------
-$fw-light: 300;
 $fw-normal: 400;
 $fw-bold: 500;
 $fw-black: 800;
 
-// FONT SIZES
+// FONT SIZES & LINE HEIGHTS
+// 
+// TO CHANGE FONT SIZES: 
+// @include set-type-as-h1()
+// SEE _utilities.scss for more
+//
 //--------------------------------------------------------------------------
-$fs-xxxlarge: 3.75em; 	// (60px) -- H1
-$fs-xxlarge: 3em; 		// (48px) -- H1
-$fs-xlarge: 2em; 		// (32px) -- H2
-$fs-large: 1.5em; 		// (24px) -- H3
-$fs-medium: 1.25em;		// (20px) -- H4
-$fs-small: 1em; 		// (16px) -- H5 & P
-$fs-xsmall: 0.75em;		// (12px) -- H6, Small button & Captions
+$fs-xxlarge: 2em; 		// AVOID USING ON ELEMENTS. INSTEAD USE THE MIXINS. // (32px) -- H1
+$fs-xlarge: 1.75em; 	// AVOID USING ON ELEMENTS. INSTEAD USE THE MIXINS. // (28px) -- H2
+$fs-large: 1.5em; 		// AVOID USING ON ELEMENTS. INSTEAD USE THE MIXINS. // (24px) -- H3
+$fs-medium: 1.25em;		// AVOID USING ON ELEMENTS. INSTEAD USE THE MIXINS. // (20px) -- H4
+$fs-small: 1em; 		// AVOID USING ON ELEMENTS. INSTEAD USE THE MIXINS. // (16px) -- H5 & P
+$fs-xsmall: 0.75em;		// AVOID USING ON ELEMENTS. INSTEAD USE THE MIXINS. // (12px) -- H6, Small button & Captions
+
+$lh-for-xxlarge: 1.35;
+$lh-for-xlarge: 1.4;
+$lh-for-large: 1.45;
+$lh-for-medium: 1.6;
+$lh-for-small: 1.75em;
+$lh-for-xsmall: 2em;
+
 
 // GLOBAL VALUES
 //--------------------------------------------------------------------------

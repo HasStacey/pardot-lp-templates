@@ -79,7 +79,7 @@
 		color: $c-slate; 
 	}
 	// Use when the button is on a dark background
-	&.button--overdarkbg:hover {
+	.banded--slate &:hover {
 		border: 1px solid $c-white; 
 		color: $c-white;
 	}
