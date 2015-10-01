@@ -275,7 +275,7 @@
 						?>
 						<!-- FULL WIDTH FORM // -->
 						<section>
-							<div class="row banded <?php if($hasSlateForm) { echo 'banded--slate'; } ?>">
+							<div class="row banded banded--slate">
 								<div class="col-80 fullwidth">
 
 									<?php 
