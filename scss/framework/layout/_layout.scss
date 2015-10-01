@@ -109,32 +109,6 @@ body {
 		background-color: $c-mdgrey;
 	}
 
-	&.banded--ltblue {
-		background-color: $c-ltblue;
-	}
-
-	&.banded--ltblue-half {
-		background-color: lighten($c-ltblue, 15%);
-	}
-
-	&.banded--green {
-		background-color: $c-green;
-	}
-
-	&.banded--dkblue {
-		background-color: $c-dkblue;
-		color: $c-white;
-
-		a:not(.button) {
-			@extend %links-over-dkblue;
-		}
-
-		.button:hover {
-			border-color: $c-white;
-			color: $c-white;
-		}
-	}
-
 	// Nested banded sections
 	.banded {
 		@extend .clearfix;
@@ -280,19 +254,82 @@ hr {
 	}
 }
 
+////////////////////////////////////////////////////////////////////////////
+
+// MAIN CONTENT CONTAINER
+
+////////////////////////////////////////////////////////////////////////////
 .content {
 	margin-top: $gutter;
 
 	img {
 		display: block;
 		margin-bottom: $gutter;
+		max-width: 100% !important;
+		height: auto !important;
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////////
+
+// EBOOK LAYOUT
+
+////////////////////////////////////////////////////////////////////////////
+.ebook body {
+	background-color: $c-white;
+}
+
+.ebook .overlay {
+	z-index: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba($c-black, 0.4);
+
+	&.overlay--light {
+		background-color: rgba($c-white, 0.6);
+	}
+}
+
+.ebook .background-image img {
+	width: 100%;
+	display: block;
+}
+
+.ebook .ebook-form {
+	position: absolute;
+	top: 10%;
+	left: 5%;
+	width: 90vw;
+	box-shadow: 0 0 10px rgba($c-black, 0.4);
+	border-radius: $border-radius;
+	padding: $gutter;
+
+	@include breakpoint(tablet) {
+		padding: $doublegutter;
+		left: 10%;
+		width: 80vw;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+// TOGGLES FULL WIDTH LAYOUT
+
+////////////////////////////////////////////////////////////////////////////
 .fullwidth {
 	margin-top: $doublegutter;
 }
 
+////////////////////////////////////////////////////////////////////////////
+
+// EXTRA CONTENT MODULES
+// SHOWN ON LONG FORM AND THANK YOU PAGES
+
+////////////////////////////////////////////////////////////////////////////
 .extra-content {
 	text-align: center;
 
@@ -338,6 +375,27 @@ hr {
 			&:hover {
 
 			}
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+// FOOTER
+
+////////////////////////////////////////////////////////////////////////////
+footer {
+	text-align: center;
+	margin-bottom: $doublegutter;
+
+	@include breakpoint(tablet) {
+		img {
+			float: left;
+		}
+
+		p {
+			float: right;
+			text-align: right;
 		}
 	}
 }

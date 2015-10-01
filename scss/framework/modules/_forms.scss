@@ -51,17 +51,24 @@
 // 		<input type="text" id="phone" name="phone" required>
 // 	</p>
 
-// 	<!-- THIS FIELD IS REQUIRED FOR ALMOST ALL FORMS - REACH OUT TO MEGAN M. BEFORE REMOVING -->
-// 	<p class="form__fieldgroup">
-// 		<label class="fieldgroup__label" for="global-region"><span class="is-required">*</span> Global Region</label>
-// 		<select name="global-region" id="global-region" required>
-// 			<option disabled selected> -- select an option -- </option>
-// 			<option value="APAC">APAC</option>
-// 			<option value="EMEA">EMEA</option>
-// 			<option value="North America">North America</option>
-// 			<option value="South America">South America</option>
-// 		</select>
-// 	</p>
+// <!-- COUNTRY SELECTOR BEGIN: REQUIRED FOR ALL FORMS // -->
+// <p class="form__fieldgroup">
+// 	<label class="fieldgroup__label" for="country"><span class="is-required">*</span> Country</label>
+// 	<select id="country" name="country" class="crs-country" data-region-id="region" data-default-value="-- select an option --" required></select>
+// </p>
+
+// <!-- HIDDEN FIELD - VALUE AUTO-SELECTED BASED UPON COUNTRY - DO NOT CHANGE ID NAME -->
+// <p class="form__fieldgroup form__fieldgroup--hidden">
+// 	<label class="fieldgroup__label" for="global-region"><span class="is-required">*</span> Global Region</label>
+// 	<input type="text" id="global-region" name="global-region" required>
+// </p>
+
+// <!-- HIDDEN FIELD - VALUE AUTO-SELECTED BASED UPON COUNTRY - DO NOT CHANGE ID NAME -->
+// <p class="form__fieldgroup form__fieldgroup--hidden">
+// 	<label class="fieldgroup__label" for="continent"><span class="is-required">*</span> Continent</label>
+// 	<input type="text" id="continent" name="continent" required>
+// </p>
+// <!-- // COUNTRY SELECTOR END -->
 
 // 	<p class="form__fieldgroup">
 // 		<label class="fieldgroup__label">Radios and Checkboxes</label>
@@ -354,6 +361,17 @@ input[type="button"] {
 	@extend .button;
 	letter-spacing: 0;
 	margin-bottom: 16px;
+
+	// Smaller button on mobile to avoid clipping
+	@include breakpoint(767px, max) {
+		&,
+		&:active,
+		&:focus {
+			@include set-type-as-h6();
+			min-width: 0;
+			padding: 4px 10px;
+		}
+	}
 }
 
 // FORM PARTS
@@ -377,6 +395,7 @@ input[type="button"] {
 
 .form__footnote {
 	@include set-type-as-h6();
+	margin-bottom: 0;
 }
 
 

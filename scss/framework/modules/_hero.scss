@@ -4,7 +4,7 @@
 
 ////////////////////////////////////////////////////////////////////////////
 .hero {
-	height: 210px; // Match the height of the image + bottom border
+	height: 200px; // Match the height of the image + bottom border
 	width: 100%;
 	overflow: hidden;
 	position: relative;
@@ -14,6 +14,7 @@
 		position: absolute;
 		left: 50%;
 		transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
 		border-bottom: 10px solid $c-blue;
 	}
 }
