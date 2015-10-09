@@ -132,7 +132,7 @@ label {
 	@include set-type-as-h6();
 
 	.banded--slate & {
-		color: $c-ltgrey;
+		color: $c-ltgrey !important; // overrides opinionated Pardot styles
 	}
 
 	&.fieldgroup__label {

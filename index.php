@@ -1,14 +1,15 @@
 <?php
-	$hasSlateForm = false; // Toggles the background for the form
+	$hasSlateForm = true; // Toggles the background for the form
 	$isLongForm = false; // Toggles long-form layout
 
 	// Full Width Layouts
-	$noSidebar = false; // Toggles fullwidth layout
+	$noSidebar = true; // Toggles fullwidth layout
 		$hasWebinar = false; // Toggles the Webinar section
 		$isThankYouPage = true; // Toggles thank you page layout
+			$hasForm = true; // Toggles the form on the thank you page layout
 
 	// Special eBook template
-	$isEBook = true;
+	$isEBook = false;
 
 	// Development Stuff
 	$inDevelopment = false; // Toggles dummy content and development styles
@@ -17,7 +18,7 @@
 
 
 <!DOCTYPE html>
-<html<?php if($isEBook){ echo ' class="ebook"';}?>>
+<html<?php if($isEBook){ echo ' class="ebook"';}?> itemscope itemtype="http://schema.org/Article">
 	<head>
 		<base href="http://in.tune.com" >
 		<meta charset="utf-8"/>
@@ -29,12 +30,41 @@
 		<!--  Favicon -->
 		<link rel="shortcut icon" href="http://www.tune.com/favicon.ico?v=2" />
 
+		<!-- Schema.org markup for Google+ -->
+		<meta itemprop="name" content="%%title%%">
+		<meta itemprop="description" content="%%description%%">
+		<meta itemprop="image" content="">		
+
+		<!-- Twitter Card data -->
+		<meta name="twitter:card" content="">
+		<meta name="twitter:site" content="@tune">
+		<meta name="twitter:title" content="%%title%%">
+		<meta name="twitter:description" content="%%description%%">
+		<meta name="twitter:creator" content="@tune">
+		<!-- Twitter summary card with large image must be at least 280x150px -->
+		<meta name="twitter:image:src" content="">
+
+		<!-- Open Graph data -->
+		<meta property="og:title" content="%%title%%" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="http://www.tune.com/img/common/brand/tune-logo-xlarge.png" />
+		<meta property="og:description" content="%%description%%" />
+		<meta property="og:site_name" content="TUNE | %%title%%" />
+		<meta property="fb:admins" content="1045235566" />
+		<meta property="fb:app_id" content="1452846498299642" />
+
+		<!-- Pinterest -->
+		<meta name="p:domain_verify" content="2ce3ffbf4d4e7e823046f4bf3166f66e"/>
+
+		<!-- Fonts -->
 		<link rel="stylesheet" type="text/css" href="//cloud.typography.com/6536912/638684/css/fonts.css" />
 
+		<!-- Styles -->
 		<style type="text/css">
 			<?php include('css/2016-pardot-lp-templates-framework.css'); ?>
 		</style>
 		
+		<!-- Modernizr -->
 		<script type="text/javascript">
 		/*! modernizr 3.0.0 (Custom Build) | MIT *
 		 * http://modernizr.com/download/?-smil !*/
@@ -213,10 +243,35 @@
 
 				<?php 
 
+					if($noSidebar && $isThankYouPage && $hasForm) {
+						ob_start();
+						?>
+						<!-- FULL WIDTH FORM // -->
+						<section>
+							<div class="row banded banded--slate">
+								<div class="col-80 fullwidth">
+
+									<?php 
+										if(!$inDevelopment) {
+									    	echo '%%content%%';
+										} else {
+											include('typical-form-elements.php');	
+										}
+									?>
+
+								    <p class="form__footnote required"><span class="is-required">*</span> indicates required field</p>
+								</div>
+							</div>
+						</section>
+						<!-- // FULL WIDTH FORM -->
+						<?php
+						ob_end_flush();
+					}
+
 					if($noSidebar && $isThankYouPage) {
 						ob_start();
 						?>
-						<!-- WEBINAR SECTION // -->
+						<!-- THANK YOU PAGE CONTENT // -->
 						<section>
 							<div class="row banded banded--ltgrey-half">
 								<div class="col-80 text-centered" style="margin-bottom: 0;">
@@ -248,7 +303,7 @@
 								</div>
 							</div>
 						</section>
-						<!-- // WEBINAR SECTION -->
+						<!-- // THANK YOU PAGE CONTENT -->
 						<?php
 						ob_end_flush();
 					}
