@@ -152,7 +152,7 @@
 									}
 								?>
 							    
-							    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris efficitur at. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. Curabitur nibh ipsum, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at finibus dui feugiat vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>
+							    <p>Lorem ipsum dolor <b>sit amet</b>, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris <strong>efficitur at</strong>. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. <em>Curabitur nibh ipsum</em>, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at <i>finibus dui feugiat</i> vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>
 
 							    <?php
 							    	if($isLongForm) {
