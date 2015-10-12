@@ -129,7 +129,11 @@ input:not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="c
 
 // SETUP LABELS
 label {
-	@include set-type-as-h6();
+	font-size: $fs-xsmall !important; // overrides opinionated Pardot styles
+	line-height: $lh-for-xsmall !important; // overrides opinionated Pardot styles
+	margin-bottom: 16px;
+	color: $c-black !important; // overrides opinionated Pardot styles
+	font-family: $f-primary !important;
 
 	.banded--slate & {
 		color: $c-ltgrey !important; // overrides opinionated Pardot styles
