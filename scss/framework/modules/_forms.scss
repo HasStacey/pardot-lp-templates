@@ -171,6 +171,11 @@ textarea {
 	}
 }
 
+// Select Option Bug Fixes
+.banded--slate select option {
+	background: $c-slate;
+}
+
 // CHECKBOX AND RADIO OPTION LABELS
 input[type="checkbox"] + label,
 input[type="radio"] + label {
