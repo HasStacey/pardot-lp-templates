@@ -20,6 +20,13 @@
 		min-height: 60px; // Height of the logo
 		background-size: 150px; // Width of the logo
 		background-position-x: center;
-		@include ir($image-tune-logo);
+
+		&.tune {
+			@include ir($image-tune-logo);
+		}
+
+		&.hasoffers {
+			@include ir($image-ho-logo);
+		}
 	}
 }

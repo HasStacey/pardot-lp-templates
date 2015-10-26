@@ -1,15 +1,18 @@
 <?php
-	$hasSlateForm = true; // Toggles the background for the form
+	$hasSlateForm = false; // Toggles the background for the form
 	$isLongForm = false; // Toggles long-form layout
 
 	// Full Width Layouts
-	$noSidebar = true; // Toggles fullwidth layout
+	$noSidebar = false; // Toggles fullwidth layout
 		$hasWebinar = false; // Toggles the Webinar section
-		$isThankYouPage = true; // Toggles thank you page layout
+		$isThankYouPage = false; // Toggles thank you page layout
 			$hasForm = true; // Toggles the form on the thank you page layout
 
 	// Special eBook template
 	$isEBook = false;
+
+	// Special Form Forwarding Templates
+	$isFormForwarding = true;
 
 	// Development Stuff
 	$inDevelopment = false; // Toggles dummy content and development styles
@@ -21,7 +24,7 @@
 <html<?php if($isEBook){ echo ' class="ebook"';}?> itemscope itemtype="http://schema.org/Article">
 	<head>
 		<base href="http://in.tune.com" >
-		<meta charset="utf-8"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>%%title%%</title>
 		<meta name="description" content="%%description%%"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -109,15 +112,37 @@
 				ob_start();
 				?>
 
-				<!-- SITE BRANDING // -->
-				<header class="banded banded--nowhitespace site-branding">
-					<div class="row">
-						<div class="col-100 text-centered">
-							<a name="TUNE">Tune</a>
-						</div>
-					</div>
-				</header>
-				<!-- // SITE BRANDING -->
+				<?php
+					if(!$isFormForwarding) {
+						ob_start();
+						?>
+						<!-- SITE BRANDING // -->
+						<header class="banded banded--nowhitespace site-branding">
+							<div class="row">
+								<div class="col-100 text-centered">
+									<a class="tune" name="TUNE">Tune</a>
+								</div>
+							</div>
+						</header>
+						<!-- // SITE BRANDING -->
+						<?php
+						ob_end_flush();
+					} else {
+						ob_start();
+						?>
+						<!-- SITE BRANDING // -->
+						<header class="banded banded--nowhitespace site-branding">
+							<div class="row">
+								<div class="col-100 text-centered">
+									<a class="hasoffers" name="HasOffers">HasOffers</a>
+								</div>
+							</div>
+						</header>
+						<!-- // SITE BRANDING -->
+						<?php
+						ob_end_flush();
+					}
+				?>
 
 				<!-- HERO IMAGE // -->
 				<section class="hero">
@@ -151,17 +176,17 @@
 										echo '<img src="https://placeholdit.imgix.net/~text?txtsize=60&txt=Any+image+up+to+733px+wide+by+any+height&w=733&h=300&txttrack=0&bg=007aff&txtclr=ffffff">';
 									}
 								?>
-							    
-							    <p>Lorem ipsum dolor <b>sit amet</b>, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris <strong>efficitur at</strong>. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. <em>Curabitur nibh ipsum</em>, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at <i>finibus dui feugiat</i> vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>
+								
+								<p>Lorem ipsum dolor <b>sit amet</b>, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris <strong>efficitur at</strong>. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. <em>Curabitur nibh ipsum</em>, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at <i>finibus dui feugiat</i> vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>
 
-							    <?php
-							    	if($isLongForm) {
-							    		echo '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris efficitur at. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. Curabitur nibh ipsum, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at finibus dui feugiat vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>';
-							    		echo '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris efficitur at. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. Curabitur nibh ipsum, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at finibus dui feugiat vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>';
-							    		echo '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris efficitur at. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. Curabitur nibh ipsum, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at finibus dui feugiat vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>';
-							    		echo '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris efficitur at. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. Curabitur nibh ipsum, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at finibus dui feugiat vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>';
-							    	}
-							    ?>
+								<?php
+									if($isLongForm) {
+										echo '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris efficitur at. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. Curabitur nibh ipsum, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at finibus dui feugiat vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>';
+										echo '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris efficitur at. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. Curabitur nibh ipsum, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at finibus dui feugiat vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>';
+										echo '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris efficitur at. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. Curabitur nibh ipsum, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at finibus dui feugiat vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>';
+										echo '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac suscipit odio, ut sollicitudin lorem. Phasellus auctor hendrerit nisi, ac ullamcorper mauris efficitur at. Etiam eu libero tortor. Curabitur et mattis neque. Vivamus ut ipsum cursus, facilisis velit eget, sagittis nunc. Curabitur nibh ipsum, efficitur vitae sagittis molestie, iaculis vel risus. In auctor laoreet tellus, at finibus dui feugiat vel. Proin eros lorem, eleifend id erat sed, aliquam hendrerit orci. Quisque iaculis massa vel arcu euismod fringilla.</p>';
+									}
+								?>
 							</div>
 						</div>
 
@@ -190,12 +215,12 @@
 										} 
 
 										if(!$inDevelopment) {
-									    	echo '%%content%%';
+											echo '%%content%%';
 										} else {
 											include('typical-form-elements.php');	
 										}
-									    
-									    echo '<p class="form__footnote required"><span class="is-required">*</span> indicates required field</p>';
+										
+										echo '<p class="form__footnote required"><span class="is-required">*</span> indicates required field</p>';
 
 										if($hasSlateForm) {
 											echo '</div>';
@@ -253,13 +278,13 @@
 
 									<?php 
 										if(!$inDevelopment) {
-									    	echo '%%content%%';
+											echo '%%content%%';
 										} else {
 											include('typical-form-elements.php');	
 										}
 									?>
 
-								    <p class="form__footnote required"><span class="is-required">*</span> indicates required field</p>
+									<p class="form__footnote required"><span class="is-required">*</span> indicates required field</p>
 								</div>
 							</div>
 						</section>
@@ -335,13 +360,13 @@
 
 									<?php 
 										if(!$inDevelopment) {
-									    	echo '%%content%%';
+											echo '%%content%%';
 										} else {
 											include('typical-form-elements.php');	
 										}
 									?>
 
-								    <p class="form__footnote required"><span class="is-required">*</span> indicates required field</p>
+									<p class="form__footnote required"><span class="is-required">*</span> indicates required field</p>
 								</div>
 							</div>
 						</section>
@@ -379,20 +404,59 @@
 
 
 				<div class="ebook-form banded <?php if($hasSlateForm) { echo 'banded--slate'; } ?> <?php if($isEBook && !$hasSlateForm) { echo 'banded--ltgrey'; }?>">
-				    <div>
+					<div>
 
 						<?php
 						if(!$inDevelopment) {
-					    	echo '%%content%%';
+							echo '%%content%%';
 						} else {
 							include('typical-form-elements.php');	
 						}
-					    
-					    echo '<p class="form__footnote required"><span class="is-required">*</span> indicates required field</p>';
+						
+						echo '<p class="form__footnote required"><span class="is-required">*</span> indicates required field</p>';
 						?>
-				    </div>
+					</div>
 				</div>
 
+				<?php
+				ob_end_flush();
+			}
+		?>
+
+		<?php
+			if ($isFormForwarding) {
+				ob_start();
+				?>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+				<script>
+				// GUID Generator
+				
+				// Regex guid generation from http://byronsalau.com/blog/how-to-create-a-guid-uuid-in-javascript/
+				function createGuid()
+				{
+					return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+						// To resolve an issue where the prng in Chrome can produce colliding
+						// random numbers (see: http://devoluk.com/google-chrome-math-random-issue.html)
+						// we're going to use the new crypto interface if available.
+						// We also need to normalize the random values generated to a value
+						// between 1 and 16 to properly build the guid
+						if (typeof crypto === 'undefined') {
+							var rand = Math.random()*16;
+						} else {
+							var rand = new Uint8Array(1);
+							crypto.getRandomValues(rand);
+							rand = rand[0]/16;
+						}
+						var r = rand|0, v = c === 'x' ? r : (r&0x3|0x8);
+						return v.toString(16);
+					});
+				}
+				window.onload=function() {
+					var uuid = createGuid();
+					$('.GUID input').val(uuid); // Set
+				}; // Regex guid        
+				
+				</script>
 				<?php
 				ob_end_flush();
 			}
