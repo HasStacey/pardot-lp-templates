@@ -354,7 +354,7 @@ hr {
 		margin-bottom: 0;
 	}
 
-	a {
+	.extra-content__link a {
 		@include set-type-as-h6();
 		position: relative; 
 		text-transform: capitalize;

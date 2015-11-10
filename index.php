@@ -1,22 +1,38 @@
 <?php
-	$hasSlateForm = false; // Toggles the background for the form
-	$isLongForm = false; // Toggles long-form layout
 
-	// Full Width Layouts
-	$noSidebar = false; // Toggles fullwidth layout
-		$hasWebinar = false; // Toggles the Webinar section
-		$isThankYouPage = false; // Toggles thank you page layout
-			$hasForm = true; // Toggles the form on the thank you page layout
+// UNCOMMENT THE TEMPLATE YOU WOULD LIKE TO EXPORT
+// -------------------------------------------------------------------------------------
+  // To export, open index.php in localhost, view source and copy.
 
-	// Special eBook template
-	$isEBook = false;
+  $template = 'standard-white';						// Standard template (with sidebar), white form  *** DEFAULT TEMPLATE
+  // $template = 'standard-slate';					// Standard template (with sidebar), slate form
+  // $template = 'standard-white-hasoffers';		// HO Form Forwarding (w/ sidebar), white form
+  // $template = 'standard-slate-hasoffers';		// HO Form Forwarding (w/ sidebar), slate form
+  // $template = 'longcopy-white';					// Long form copy layout w/ sidebar, white form
+  // $template = 'longcopy-slate';					// Long form copy layout w/ sidebar, slate form
+  // $template = 'fullwidth-slate';					// Full width template, slate form
+  // $template = 'webinar-slate';					// Full width template with webinar, slate form
+  // $template = 'ebook-ltgrey';					// Ebook template, white form
+  // $template = 'ebook-slate';						// Ebook template, slate form
+  // $template = 'thankyou-slate';					// Thank you page, NO BUTTON, slate form
+  // $template = 'thankyou-noform';					// Thank you page, NO BUTTON, NO FORM
+  // $template = 'thankyou-hasbutton-slate';		// Thank you page with button, slate form
+  $template = 'thankyou-hasbutton-noform';		// Thank you page with button, NO FORM
 
-	// Special Form Forwarding Templates
-	$isFormForwarding = true;
 
-	// Development Stuff
-	$inDevelopment = false; // Toggles dummy content and development styles
-	$highlightPardotRegions = false; // Puts an outline around all elements with the pardot-region attr
+  // HIGHLIGHT THE PARDOT REGIONS?
+  // This if intended for development only
+  // -------------------------------------------------------------------------------------
+  $highlightPardotRegions = false;		// no outlines around pardot-region elements
+  // $highlightPardotRegions = true;	// Puts an outline around all elements with the pardot-region attr
+
+  // DEVELOPMENT ENVIRONMENT
+  // localhost = false
+  // -------------------------------------------------------------------------------------
+  $inDevelopment = false; 				// No dummy content and development styles
+  // $inDevelopment = true; 			// Toggles dummy content and development styles
+
+  include('variables.php');
 ?>
 
 
@@ -120,7 +136,7 @@
 						<header class="banded banded--nowhitespace site-branding">
 							<div class="row">
 								<div class="col-100 text-centered">
-									<a class="tune" name="TUNE">Tune</a>
+									<a class="tune" <?php if($isThankYouPage) { echo 'href="http://www.tune.com" target="_blank"'; }?> name="TUNE">Tune</a>
 								</div>
 							</div>
 						</header>
@@ -134,7 +150,7 @@
 						<header class="banded banded--nowhitespace site-branding">
 							<div class="row">
 								<div class="col-100 text-centered">
-									<a class="hasoffers" name="HasOffers">HasOffers</a>
+									<a class="hasoffers" <?php if($isThankYouPage) { echo 'href="http://www.hasoffers.com" target="_blank"'; }?> name="HasOffers">HasOffers</a>
 								</div>
 							</div>
 						</header>
@@ -191,7 +207,7 @@
 						</div>
 
 						<?php
-							if($noSidebar && $isThankYouPage) {
+							if($noSidebar && $isThankYouPage && $hasDownloadButton) {
 								ob_start();
 								?>
 									<div class="col-80 text-centered">
@@ -232,17 +248,21 @@
 											?>
 												<h5 pardot-region="region__more-content-header" class="text-centered" style="margin-top: 40px;">Want more? Check these out!</h5>
 												<div class="extra-content extra-content--longform">
-													<img src="https://placeholdit.imgix.net/~text?txtsize=18&txt=129x100&w=129&h=100&bg=007aff&txtclr=ffffff" pardot-region="region__more-content-1-image">
+													<div pardot-region="region__more-content-1-image">
+														<a href="#"><img src="https://placeholdit.imgix.net/~text?txtsize=18&txt=129x100&w=129&h=100&bg=007aff&txtclr=ffffff"></a>
+													</div>
 													<h6 pardot-region="region__more-content-1-context">New On Our Blog:</h6>
 													<p pardot-region="region__more-content-1-title">Top 25 Advertising Partners - Fall Edition</p>
-													<a href="#" pardot-region="region__more-content-1-link">Visit our blog</a>
+													<div pardot-region="region__more-content-1-link" class="extra-content__link"><a href="#">View Our Resources</a></div>
 												</div>
 
 												<div class="extra-content extra-content--longform">
-													<img src="https://placeholdit.imgix.net/~text?txtsize=18&txt=77x100&w=77&h=100&bg=007aff&txtclr=ffffff" pardot-region="region__more-content-2-image">
+													<div pardot-region="region__more-content-2-image">
+														<a href="#"><img src="https://placeholdit.imgix.net/~text?txtsize=18&txt=77x100&w=77&h=100&bg=007aff&txtclr=ffffff"></a>
+													</div>
 													<h6 pardot-region="region__more-content-2-context">White Paper:</h6>
 													<p pardot-region="region__more-content-2-title">App Store Optimization</p>
-													<a href="#" pardot-region="region__more-content-2-link">View Our Resources</a>
+													<div pardot-region="region__more-content-2-link" class="extra-content__link"><a href="#">View Our Resources</a></div>
 												</div>
 											<?php
 											ob_end_flush();
@@ -305,24 +325,30 @@
 								<div class="col-80" style="margin-top: 0;">
 
 									<div class="col-33 extra-content">
-										<img src="https://placeholdit.imgix.net/~text?txtsize=18&txt=129x100&w=129&h=100&bg=007aff&txtclr=ffffff" pardot-region="region__more-content-1-image">
+										<div pardot-region="region__more-content-1-image">
+											<a href="#" alt="Alternate text"><img src="https://placeholdit.imgix.net/~text?txtsize=18&txt=129x100&w=129&h=100&bg=007aff&txtclr=ffffff"></a>
+										</div>
 										<h6 pardot-region="region__more-content-1-context">New On Our Blog:</h6>
 										<p pardot-region="region__more-content-1-title">Top 25 Advertising Partners - Fall Edition</p>
-										<a href="#" pardot-region="region__more-content-1-link">Visit our blog</a>
+										<div pardot-region="region__more-content-1-link" class="extra-content__link"><a href="#">Visit our blog</a></div>
 									</div>
 
 									<div class="col-33 extra-content">
-										<img src="https://placeholdit.imgix.net/~text?txtsize=18&txt=77x100&w=77&h=100&bg=007aff&txtclr=ffffff" pardot-region="region__more-content-2-image">
+										<div pardot-region="region__more-content-2-image">
+											<a href="#" alt="Alternate text"><img src="https://placeholdit.imgix.net/~text?txtsize=18&txt=77x100&w=77&h=100&bg=007aff&txtclr=ffffff"></a>
+										</div>
 										<h6 pardot-region="region__more-content-2-context">White Paper:</h6>
 										<p pardot-region="region__more-content-2-title">App Store Optimization</p>
-										<a href="#" pardot-region="region__more-content-2-link">View Our Resources</a>
+										<div pardot-region="region__more-content-2-link" class="extra-content__link"><a href="#">View Our Resources</a></div>
 									</div>
 
 									<div class="col-33 extra-content">
-										<img src="https://placeholdit.imgix.net/~text?txtsize=18&txt=129x100&w=129&h=100&bg=007aff&txtclr=ffffff" pardot-region="region__more-content-3-image">
+										<div pardot-region="region__more-content-3-image">
+											<a  href="#" alt="Alternate text"><img src="https://placeholdit.imgix.net/~text?txtsize=18&txt=129x100&w=129&h=100&bg=007aff&txtclr=ffffff"></a>
+										</div>
 										<h6 pardot-region="region__more-content-3-context">Webinar:</h6>
 										<p pardot-region="region__more-content-3-title">TUNE &amp; URX: Deeplinking</p>
-										<a href="#" pardot-region="region__more-content-3-link">View our resources</a>
+										<div pardot-region="region__more-content-3-link" class="extra-content__link"><a href="#">View our resources</a></div>
 									</div>
 
 								</div>

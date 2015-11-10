@@ -317,6 +317,15 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/variables.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/variables.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		}
 	},
 "hooks": [
@@ -326,8 +335,8 @@
 	},
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
-	"displayValue": "pardot-lp-templates",
-	"displayValueWasSetByUser": 0,
+	"displayValue": "pardot-landingpages",
+	"displayValueWasSetByUser": 1,
 	"iconImageName": "meme-grumpy"
 	},
 "projectSettings": {
